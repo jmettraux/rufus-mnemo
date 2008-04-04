@@ -1,0 +1,6 @@
+
+= rufus-mnemo CHANGELOG.txt
+
+
+== rufus-mnemo - 1.0    released 2008/01/25
+
