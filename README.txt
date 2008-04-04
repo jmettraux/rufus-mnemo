@@ -54,9 +54,9 @@ http://rubyforge.org/tracker/?atid=18584&group_id=4812&func=browse
 
 == source
 
-http://rufus.rubyforge.org/svn/trunk/mnemo
+http://github.com/jmettraux/rufus-mnemo
 
-    svn checkout http://rufus.rubyforge.org/svn/trunk/mnemo
+    git checkout git://github.com/jmettraux/rufus-mnemo.git
 
 
 == author
