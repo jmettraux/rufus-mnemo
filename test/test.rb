@@ -80,5 +80,16 @@ class MnemoTest < Test::Unit::TestCase
     assert_equal -1, Rufus::Mnemo::to_integer('wibe')
     assert_equal 'wibe', Rufus::Mnemo::from_integer(-1)
   end
+
+  def test_wi_bad_position
+
+     %w(wi wiwi bewi nawi nabewi nawibe nawiwi).each do |bad_mnemo|
+
+       error = assert_raise RuntimeError do
+         Rufus::Mnemo::to_integer(bad_mnemo)
+       end
+       assert_equal "did not find syllable 'wi'", error.to_s
+     end
+   end
 end
 
