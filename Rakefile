@@ -11,7 +11,7 @@ require 'rake/testtask'
 require 'hanna/rdoctask'
 
 
-RUFUS_MNEMO_VERSION = "1.0"
+RUFUS_MNEMO_VERSION = '1.1.0'
 
 #
 # GEM SPEC
@@ -26,12 +26,13 @@ spec = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.summary = "Turning (large) integers into japanese sounding words and vice versa"
   #s.license = "MIT"
+  s.description = "Turning (large) integers into japanese sounding words and vice versa"
 
   s.require_path = "lib"
   #s.autorequire = "rufus-mnemo"
   s.test_file = "test/test.rb"
   s.has_rdoc = true
-  s.extra_rdoc_files = [ 'README.txt' ]
+  s.extra_rdoc_files = %w[ README.txt ]
 
   #[ 'rufus-lru' ].each do |d|
   #    s.requirements << d
