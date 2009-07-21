@@ -65,5 +65,20 @@ class MnemoTest < Test::Unit::TestCase
     assert (not Rufus::Mnemo::is_mnemo_word("dsfadf"))
     assert (not Rufus::Mnemo::is_mnemo_word("takeshin"))
   end
+
+  def test_zero
+
+    assert_equal '', Rufus::Mnemo::from_integer(0)
+    assert_equal 0, Rufus::Mnemo::to_integer('')
+  end
+
+  def test_negatives
+
+    assert_equal -35, Rufus::Mnemo::to_integer('wina')
+    assert_equal 'wina', Rufus::Mnemo::from_integer(-35)
+
+    assert_equal -1, Rufus::Mnemo::to_integer('wibe')
+    assert_equal 'wibe', Rufus::Mnemo::from_integer(-1)
+  end
 end
 

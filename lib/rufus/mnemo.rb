@@ -68,6 +68,8 @@ module Rufus
   #
   module Mnemo
 
+    VERSION = '1.1.0'
+
     V = %w[ a e i o u ]
     C = %w[ b d g h j k m n p r s t z ]
 
@@ -79,35 +81,30 @@ module Rufus
       end
     end
 
-    SYL << "wa"
-    SYL << "wo"
+    SYL << 'wa'
+    SYL << 'wo'
 
-    SYL << "ya"
-    SYL << "yo"
-    SYL << "yu"
+    SYL << 'ya'
+    SYL << 'yo'
+    SYL << 'yu'
 
     SPECIAL = [
-      [ "hu", "fu" ],
-      [ "si", "shi" ],
-      [ "ti", "chi" ],
-      [ "tu", "tsu" ],
-      [ "zi", "tzu" ]
+      [ 'hu', 'fu' ],
+      [ 'si', 'shi' ],
+      [ 'ti', 'chi' ],
+      [ 'tu', 'tsu' ],
+      [ 'zi', 'tzu' ]
     ]
 
-    #SYL2 = SYL.collect do |syl|
-    #  s = syl
-    #  SPECIAL.each do |a, b|
-    #    if s == a
-    #      s = b
-    #      break
-    #    end
-    #  end
-    #  s
-    #end
+    NEG = 'wi'
+    NEGATIVE = /^#{NEG}(.+)$/
 
     # Turns the given integer into a Mnemo word.
     #
     def Mnemo.from_integer (integer)
+
+      return "#{NEG}#{from_integer(-integer)}" if integer < 0
+
       s = from_i(integer)
       to_special(s)
     end
@@ -115,6 +112,7 @@ module Rufus
     # Turns the given Mnemo word to its equivalent integer.
     #
     def Mnemo.to_integer (string)
+
       s = from_special(string)
       to_i(s)
     end
@@ -123,6 +121,7 @@ module Rufus
     # For example Mnemo::to_number("fu") will yield 19.
     #
     def Mnemo.to_number (syllable)
+
       SYL.each_with_index do |s, index|
         return index if syllable == s
       end
@@ -134,8 +133,10 @@ module Rufus
     # [ "tsu", "na", "shi", "ma" ]
     #
     def Mnemo.split (word)
+
       word = from_special(word)
       a = string_split(word)
+
       a_to_special(a)
     end
 
@@ -143,6 +144,7 @@ module Rufus
     # "toriyamanobashi".
     #
     def Mnemo.is_mnemo_word (string)
+
       begin
         to_integer(string)
         true
@@ -154,12 +156,16 @@ module Rufus
     private
 
     def Mnemo.string_split (s, result=[])
+
       return result if s.length < 1
+
       result << s[0, 2]
+
       string_split(s[2..-1], result)
     end
 
     def Mnemo.a_to_special (a)
+
       a.collect do |syl|
         SPECIAL.each do |a, b|
           if syl == a
@@ -172,17 +178,13 @@ module Rufus
     end
 
     def Mnemo.to_special (s)
-      SPECIAL.each do |a, b|
-        s = s.gsub(a, b)
-      end
-      s
+
+      SPECIAL.inject(s) { |s, (a, b)| s.gsub(a, b) }
     end
 
     def Mnemo.from_special (s)
-      SPECIAL.each do |a, b|
-        s = s.gsub(b, a)
-      end
-      s
+
+      SPECIAL.inject(s) { |s, (a, b)| s.gsub(b, a) }
     end
 
     def Mnemo.from_i (integer)
@@ -196,7 +198,13 @@ module Rufus
     end
 
     def Mnemo.to_i (s)
+
       return 0 if s.length == 0
+
+      if m = s.match(NEGATIVE)
+        return -1 * to_i(m[1])
+      end
+
       SYL.length * to_i(s[0..-3]) + to_number(s[-2, 2])
     end
   end

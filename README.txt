@@ -31,6 +31,14 @@ http://rubyforge.org/frs/?group_id=4812
     # => 125704
 
 
+== about negative integers
+
+They are prefixed with the "wi" syllable (Thanks Stephan Wehner).
+
+  p Rufus::Mnemo::from_integer -173866
+    # => 'winamote'
+
+
 = dependencies
 
 None.
