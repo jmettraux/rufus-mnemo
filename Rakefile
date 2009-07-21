@@ -4,8 +4,10 @@ require 'rubygems'
 require 'rake'
 require 'rake/clean'
 require 'rake/packagetask'
-require 'rake/gempackagetask'
 require 'rake/testtask'
+
+#require 'rake/gempackagetask'
+require 'rubygems/package_task'
 
 #require 'rake/rdoctask'
 require 'hanna/rdoctask'
@@ -16,21 +18,21 @@ RUFUS_MNEMO_VERSION = '1.1.0'
 #
 # GEM SPEC
 
-spec = Gem::Specification.new do |s|
+gemspec = Gem::Specification.new do |s|
 
-  s.name = "rufus-mnemo"
+  s.name = 'rufus-mnemo'
   s.version = RUFUS_MNEMO_VERSION
-  s.authors = [ "John Mettraux" ]
-  s.email = "jmettraux@gmail.com"
-  s.homepage = "http://rufus.rubyforge.org/rufus-mnemo"
+  s.authors = [ 'John Mettraux' ]
+  s.email = 'jmettraux@gmail.com'
+  s.homepage = 'http://rufus.rubyforge.org/rufus-mnemo'
   s.platform = Gem::Platform::RUBY
-  s.summary = "Turning (large) integers into japanese sounding words and vice versa"
+  s.summary = 'Turning (large) integers into japanese sounding words and vice versa'
   #s.license = "MIT"
-  s.description = "Turning (large) integers into japanese sounding words and vice versa"
+  s.description = 'Turning (large) integers into japanese sounding words and vice versa'
 
-  s.require_path = "lib"
-  #s.autorequire = "rufus-mnemo"
-  s.test_file = "test/test.rb"
+  s.require_path = 'lib'
+  #s.autorequire = 'rufus-mnemo'
+  s.test_file = 'test/test.rb'
   s.has_rdoc = true
   s.extra_rdoc_files = %w[ README.txt ]
 
@@ -40,7 +42,7 @@ spec = Gem::Specification.new do |s|
   #end
 
   files = FileList[ "{bin,docs,lib,test}/**/*" ]
-  files.exclude "rdoc"
+  files.exclude 'rdoc'
   s.files = files.to_a
 end
 
@@ -64,17 +66,21 @@ end
 #
 # PACKAGING
 
-Rake::GemPackageTask.new(spec) do |pkg|
+# the gem
+#
+Gem::PackageTask.new(gemspec) do |pkg|
   #pkg.need_tar = true
 end
 
-Rake::PackageTask.new("rufus-mnemo", RUFUS_MNEMO_VERSION) do |pkg|
+# the source zip
+#
+Gem::PackageTask.new(gemspec) do |pkg|
   pkg.need_zip = true
   pkg.package_files = FileList[
-    "Rakefile",
-    "*.txt",
-    "lib/**/*",
-    "test/**/*"
+    'Rakefile',
+    '*.txt',
+    'lib/**/*',
+    'test/**/*'
   ].to_a
   #pkg.package_files.delete("MISC.txt")
   class << pkg
@@ -113,8 +119,8 @@ end
 
 task :upload_website => [ :clean, :rrdoc ] do
 
-  account = "jmettraux@rubyforge.org"
-  webdir = "/var/www/gforge-projects/rufus"
+  account = 'jmettraux@rubyforge.org'
+  webdir = '/var/www/gforge-projects/rufus'
 
   sh "rsync -azv -e ssh html/rufus-mnemo #{account}:#{webdir}/"
 end
