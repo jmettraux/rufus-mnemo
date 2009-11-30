@@ -10,7 +10,7 @@ require 'rake/testtask'
 require 'rubygems/package_task'
 
 #require 'rake/rdoctask'
-require 'hanna/rdoctask'
+#require 'hanna/rdoctask'
 
 
 #
@@ -81,30 +81,18 @@ end
 #
 # DOCUMENTATION
 
-Rake::RDocTask.new do |rd|
-
-  rd.main = 'README.txt'
-  rd.rdoc_dir = 'html/rufus-mnemo'
-  rd.rdoc_files.include(
-    'README.txt',
-    'CHANGELOG.txt',
-    'LICENSE.txt',
-    #'CREDITS.txt',
-    'lib/**/*.rb')
-  #rd.rdoc_files.exclude('lib/tokyotyrant.rb')
-  rd.title = 'rufus-mnemo rdoc'
-  rd.options << '-N' # line numbers
-  rd.options << '-S' # inline source
+task :rdoc do
+  sh %{
+    rm -fR html
+    yardoc 'lib/**/*.rb' -o html/rufus-scheduler --title 'rufus-scheduler' --files CHANGELOG.txt,LICENSE.txt,CREDITS.txt
+  }
 end
 
-task :rrdoc => :rdoc do
-  FileUtils.cp('doc/rdoc-style.css', 'html/rufus-mnemo/')
-end
 
 #
 # WEBSITE
 
-task :upload_website => [ :clean, :rrdoc ] do
+task :upload_website => [ :clean, :rdoc ] do
 
   account = 'jmettraux@rubyforge.org'
   webdir = '/var/www/gforge-projects/rufus'
