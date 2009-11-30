@@ -68,7 +68,7 @@ module Rufus
   #
   module Mnemo
 
-    VERSION = '1.1.0'
+    VERSION = '1.1.1'
 
     V = %w[ a e i o u ]
     C = %w[ b d g h j k m n p r s t z ]
@@ -193,6 +193,10 @@ module Rufus
 
       mod = integer % SYL.length
       rest = integer / SYL.length
+
+      rest = rest.to_i
+      mod = mod.to_i
+        # mathn prevention
 
       from_i(rest) + SYL[mod]
     end

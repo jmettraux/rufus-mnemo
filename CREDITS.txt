@@ -6,5 +6,6 @@ John Mettraux
 
 == feedback
 
+Chris Hapgood (issue with mathn)
 Stephan Wehner
 

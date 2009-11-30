@@ -83,13 +83,22 @@ class MnemoTest < Test::Unit::TestCase
 
   def test_wi_bad_position
 
-     %w(wi wiwi bewi nawi nabewi nawibe nawiwi).each do |bad_mnemo|
+    %w(wi wiwi bewi nawi nabewi nawibe nawiwi).each do |bad_mnemo|
 
-       error = assert_raise RuntimeError do
-         Rufus::Mnemo::to_integer(bad_mnemo)
-       end
-       assert_equal "did not find syllable 'wi'", error.to_s
-     end
-   end
+      error = assert_raise RuntimeError do
+        Rufus::Mnemo::to_integer(bad_mnemo)
+      end
+      assert_equal "did not find syllable 'wi'", error.to_s
+    end
+  end
+
+  def test_collision_with_mathn
+
+    assert_equal 'dobejotehozi',  Rufus::Mnemo.from_i(13477774722)
+
+    require 'mathn'
+
+    assert_equal 'dobejotehozi',  Rufus::Mnemo.from_i(13477774722)
+  end
 end
 
