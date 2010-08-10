@@ -1,6 +1,7 @@
 
 = rufus-mnemo CHANGELOG.txt
 
+== rufus-mnemo - 1.2.0    not yet released
 
-== rufus-mnemo - 1.0    released 2008/01/25
+== rufus-mnemo - 1.0.0    released 2008/01/25
 
