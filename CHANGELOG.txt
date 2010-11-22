@@ -1,7 +1,11 @@
 
 = rufus-mnemo CHANGELOG.txt
 
-== rufus-mnemo - 1.2.0    not yet released
+
+== rufus-mnemo - 1.2.0    released 2010/11/22
+
+- neutralized -W warnings
+
 
 == rufus-mnemo - 1.0.0    released 2008/01/25
 
