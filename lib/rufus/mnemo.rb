@@ -166,25 +166,17 @@ module Rufus
 
     def self.a_to_special (a)
 
-      a.collect do |syl|
-        SPECIAL.each do |a, b|
-          if syl == a
-            syl = b
-            break
-          end
-        end
-        syl
-      end
+      a.collect { |syl| SPECIAL.find { |aa, bb| syl == bb } || syl }
     end
 
     def self.to_special (s)
 
-      SPECIAL.inject(s) { |s, (a, b)| s.gsub(a, b) }
+      SPECIAL.inject(s) { |ss, (a, b)| ss.gsub(a, b) }
     end
 
     def self.from_special (s)
 
-      SPECIAL.inject(s) { |s, (a, b)| s.gsub(b, a) }
+      SPECIAL.inject(s) { |ss, (a, b)| ss.gsub(b, a) }
     end
 
     def self.from_i (integer)
