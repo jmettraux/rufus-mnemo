@@ -101,7 +101,7 @@ module Rufus
 
     # Turns the given integer into a Mnemo word.
     #
-    def self.from_integer (integer)
+    def self.from_integer(integer)
 
       return "#{NEG}#{from_integer(-integer)}" if integer < 0
 
@@ -111,7 +111,7 @@ module Rufus
 
     # Turns the given Mnemo word to its equivalent integer.
     #
-    def self.to_integer (string)
+    def self.to_integer(string)
 
       s = from_special(string)
       to_i(s)
@@ -120,7 +120,7 @@ module Rufus
     # Turns a simple syllable into the equivalent number.
     # For example Mnemo::to_number("fu") will yield 19.
     #
-    def self.to_number (syllable)
+    def self.to_number(syllable)
 
       SYL.each_with_index do |s, index|
         return index if syllable == s
@@ -132,7 +132,7 @@ module Rufus
     # For example, "tsunashima" will be split into
     # [ "tsu", "na", "shi", "ma" ]
     #
-    def self.split (word)
+    def self.split(word)
 
       word = from_special(word)
       a = string_split(word)
@@ -143,7 +143,7 @@ module Rufus
     # Returns if the string is a Mnemo word, like "fugu" or
     # "toriyamanobashi".
     #
-    def self.is_mnemo_word (string)
+    def self.is_mnemo_word(string)
 
       begin
         to_integer(string)
@@ -155,7 +155,7 @@ module Rufus
 
     private
 
-    def self.string_split (s, result=[])
+    def self.string_split(s, result=[])
 
       return result if s.length < 1
 
@@ -164,22 +164,22 @@ module Rufus
       string_split(s[2..-1], result)
     end
 
-    def self.a_to_special (a)
+    def self.a_to_special(a)
 
       a.collect { |syl| SPECIAL.find { |aa, bb| syl == bb } || syl }
     end
 
-    def self.to_special (s)
+    def self.to_special(s)
 
       SPECIAL.inject(s) { |ss, (a, b)| ss.gsub(a, b) }
     end
 
-    def self.from_special (s)
+    def self.from_special(s)
 
       SPECIAL.inject(s) { |ss, (a, b)| ss.gsub(b, a) }
     end
 
-    def self.from_i (integer)
+    def self.from_i(integer)
 
       return '' if integer == 0
 
@@ -193,12 +193,12 @@ module Rufus
       from_i(rest) + SYL[mod]
     end
 
-    def self.to_s (i)
+    def self.to_s(i)
 
       from_i(i)
     end
 
-    def self.to_i (s)
+    def self.to_i(s)
 
       return 0 if s.length == 0
 
