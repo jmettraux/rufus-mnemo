@@ -19,14 +19,14 @@ http://rubyforge.org/frs/?group_id=4812
 
   require 'rubygems'
   require 'rufus/mnemo'
-  
+
   s = Rufus::Mnemo::from_integer 125704
-  
+
   puts s
     # => 'karasu'
-  
+
   i = Rufus::Mnemo::to_integer s
-  
+
   puts i
     # => 125704
 
@@ -51,9 +51,14 @@ On the rufus-ruby list[http://groups.google.com/group/rufus-ruby] :
   http://groups.google.com/group/rufus-ruby
 
 
+== IRC
+
+On freenode.net, the #ruote channel
+
+
 == issue tracker
 
-http://rubyforge.org/tracker/?atid=18584&group_id=4812&func=browse
+https://github.com/jmettraux/rufus-mnemo/issues
 
 
 == source
@@ -65,7 +70,7 @@ http://github.com/jmettraux/rufus-mnemo
 
 == author
 
-John Mettraux, jmettraux@gmail.com 
+John Mettraux, jmettraux@gmail.com
 http://jmettraux.wordpress.com
 
 
