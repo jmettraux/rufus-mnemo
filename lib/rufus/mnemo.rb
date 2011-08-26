@@ -68,7 +68,7 @@ module Rufus
   #
   module Mnemo
 
-    VERSION = '1.2.1'
+    VERSION = '1.2.2'
 
     SYL = %w[
       b d g h j k m n p r s t z
@@ -95,7 +95,7 @@ module Rufus
 
       return "#{NEG}#{from_integer(-integer)}" if integer < 0
 
-      to_special(from_i(integer))
+      to_special(_from_integer(integer))
     end
 
     # Turns the given Mnemo word to its equivalent integer.
@@ -165,7 +165,7 @@ module Rufus
       SPECIAL.inject(s) { |ss, (a, b)| ss.gsub(b, a) }
     end
 
-    def self.from_i(integer)
+    def self._from_integer(integer) # :nodoc:
 
       return '' if integer == 0
 
@@ -193,7 +193,8 @@ module Rufus
     end
 
     class << self
-      alias to_s from_i
+      alias to_s from_integer
+      alias from_i from_integer
     end
   end
 end

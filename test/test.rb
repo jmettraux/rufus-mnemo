@@ -91,16 +91,22 @@ class MnemoTest < Test::Unit::TestCase
 
   def test_collision_with_mathn
 
-    assert_equal 'dobejotehozi',  Rufus::Mnemo.from_i(13477774722)
+    assert_equal 'dobejotehozi',  Rufus::Mnemo._from_integer(13477774722)
 
     require 'mathn'
 
-    assert_equal 'dobejotehozi',  Rufus::Mnemo.from_i(13477774722)
+    assert_equal 'dobejotehozi',  Rufus::Mnemo._from_integer(13477774722)
   end
 
-  def test_to_s
+  def test_aliases
 
-    assert_equal 'dobejotehozi',  Rufus::Mnemo.to_s(13477774722)
+    assert_equal 'wina', Rufus::Mnemo.from_integer(-35)
+    assert_equal 'wina', Rufus::Mnemo.from_i(-35)
+    assert_equal 'wina', Rufus::Mnemo.to_s(-35)
+
+    assert_equal 'dobejotehotzu',  Rufus::Mnemo.from_integer(13477774722)
+    assert_equal 'dobejotehotzu',  Rufus::Mnemo.from_i(13477774722)
+    assert_equal 'dobejotehotzu',  Rufus::Mnemo.to_s(13477774722)
   end
 end
 
