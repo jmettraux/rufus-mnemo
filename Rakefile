@@ -1,85 +1,83 @@
 
+$:.unshift('.') # 1.9.2
+
 require 'rubygems'
+require 'rubygems/user_interaction' if Gem::RubyGemsVersion == '1.5.0'
+
 require 'rake'
-
-
-load 'lib/rufus/mnemo.rb'
-
-
-#
-# CLEAN
-
 require 'rake/clean'
-CLEAN.include('pkg', 'tmp', 'html')
-task :default => [ :clean ]
+require 'rdoc/task'
 
 
 #
-# GEM
+# clean
 
-require 'jeweler'
+CLEAN.include('pkg', 'rdoc')
 
-Jeweler::Tasks.new do |gem|
 
-  gem.version = Rufus::Mnemo::VERSION
-  gem.name = 'rufus-mnemo'
-  gem.summary = 'Turning (large) integers into japanese sounding words and vice versa'
-  gem.description = %{
-Turning (large) integers into japanese sounding words and vice versa'
-  }
-  gem.email = 'jmettraux@gmail.com'
-  gem.homepage = 'http://github.com/jmettraux/rufus-mnemo/'
-  gem.authors = [ 'John Mettraux' ]
-  gem.rubyforge_project = 'rufus'
+#
+# test / spec
 
-  gem.test_file = 'test/test.rb'
-
-  #gem.add_dependency 'rufus-json', '>= 0.2.5'
-  gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'jeweler'
-
-  # gemspec spec : http://www.rubygems.org/read/chapter/20
+task :test do
+  sh 'ruby test/test.rb'
 end
-Jeweler::GemcutterTasks.new
+task :default => :test
 
 
 #
-# DOC
+# gem
 
-#begin
-#  require 'yard'
-#  YARD::Rake::YardocTask.new do |doc|
-#    doc.options = [
-#      '-o', 'html/rufus-cloche', '--title',
-#      "rufus-cloche #{Rufus::Cloche::VERSION}"
-#    ]
-#  end
-#rescue LoadError
-#  task :yard do
-#    abort "YARD is not available : sudo gem install yard"
-#  end
-#end
+GEMSPEC_FILE = Dir['*.gemspec'].first
+GEMSPEC = eval(File.read(GEMSPEC_FILE))
+GEMSPEC.validate
 
+
+desc %{
+  builds the gem and places it in pkg/
+}
+task :build do
+
+  sh "gem build #{GEMSPEC_FILE}"
+  sh "mkdir pkg" rescue nil
+  sh "mv #{GEMSPEC.name}-#{GEMSPEC.version}.gem pkg/"
+end
+
+desc %{
+  builds the gem and pushes it to rubygems.org
+}
+task :push => :build do
+
+  sh "gem push pkg/#{GEMSPEC.name}-#{GEMSPEC.version}.gem"
+end
+
+
+#
+# rdoc
 #
 # make sure to have rdoc 2.5.x to run that
-#
-require 'rake/rdoctask'
+
 Rake::RDocTask.new do |rd|
+
   rd.main = 'README.txt'
-  rd.rdoc_dir = 'rdoc/rufus-mnemo'
-  rd.rdoc_files.include('README.rdoc', 'CHANGELOG.txt', 'lib/**/*.rb')
-  rd.title = "rufus-mnemo #{Rufus::Mnemo::VERSION}"
+  rd.rdoc_dir = "rdoc/#{GEMSPEC.name}"
+
+  rd.rdoc_files.include('README.mdown', 'CHANGELOG.txt', 'lib/**/*.rb')
+
+  rd.title = "#{GEMSPEC.name} #{GEMSPEC.version}"
 end
 
 
 #
-# TO THE WEB
+# upload_rdoc
 
+desc %{
+  upload the rdoc to rubyforge
+}
 task :upload_rdoc => [ :clean, :rdoc ] do
 
   account = 'jmettraux@rubyforge.org'
   webdir = '/var/www/gforge-projects/rufus'
 
-  sh "rsync -azv -e ssh rdoc/rufus-mnemo #{account}:#{webdir}/"
+  sh "rsync -azv -e ssh rdoc/#{GEMSPEC.name} #{account}:#{webdir}/"
 end
 
