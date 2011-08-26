@@ -193,6 +193,11 @@ module Rufus
       from_i(rest) + SYL[mod]
     end
 
+    def self.to_s (i)
+
+      from_i(i)
+    end
+
     def self.to_i (s)
 
       return 0 if s.length == 0

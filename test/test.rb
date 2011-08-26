@@ -2,8 +2,6 @@
 #
 # Testing rufus-mnemo
 #
-# John Mettraux at openwfe.org
-#
 # Sun Mar 18 13:29:37 JST 2007
 #
 
@@ -15,7 +13,6 @@ require 'rufus/mnemo'
 #
 # testing misc things
 #
-
 class MnemoTest < Test::Unit::TestCase
 
   #def setup
@@ -99,6 +96,11 @@ class MnemoTest < Test::Unit::TestCase
     require 'mathn'
 
     assert_equal 'dobejotehozi',  Rufus::Mnemo.from_i(13477774722)
+  end
+
+  def test_to_s
+
+    assert_equal 'dobejotehozi',  Rufus::Mnemo.to_s(13477774722)
   end
 end
 

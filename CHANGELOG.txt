@@ -2,6 +2,11 @@
 = rufus-mnemo CHANGELOG.txt
 
 
+== rufus-mnemo - 1.2.1    released 2010/11/22
+
+- Rufus::Mnemo.to_s(i) (alias for .from_i(i))
+
+
 == rufus-mnemo - 1.2.0    released 2010/11/22
 
 - neutralized -W warnings
