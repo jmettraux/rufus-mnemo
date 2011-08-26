@@ -10,10 +10,6 @@ The module Rufus::Mnemo has all the explanation.
 
   gem install rufus-mnemo
 
-or at
-
-http://rubyforge.org/frs/?group_id=4812
-
 
 == usage
 
@@ -25,8 +21,9 @@ http://rubyforge.org/frs/?group_id=4812
   p Rufus::Mnemo.to_s(125704)
     # => "karasu"
 
-  p Rufus::Mnemo.to_integer(s)
-  p Rufus::Mnemo.to_i(s)
+  p Rufus::Mnemo.to_integer('karasu')
+  p Rufus::Mnemo.to_i('karasu')
+  p Rufus::Mnemo.from_s('karasu')
     # => 125704
 
 

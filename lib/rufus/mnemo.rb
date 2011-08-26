@@ -102,7 +102,7 @@ module Rufus
     #
     def self.to_integer(string)
 
-      to_i(from_special(string))
+      _to_i(from_special(string))
     end
 
     # Turns a simple syllable into the equivalent number.
@@ -179,22 +179,28 @@ module Rufus
       from_i(rest) + SYL[mod]
     end
 
-    def self.to_i(s)
+    def self._to_i(s) # :nodoc:
 
       if s.length == 0
         return 0
       end
 
       if m = s.match(NEGATIVE)
-        return -1 * to_i(m[1])
+        return -1 * _to_i(m[1])
       end
 
-      SYL.length * to_i(s[0..-3]) + to_number(s[-2, 2])
+      SYL.length * _to_i(s[0..-3]) + to_number(s[-2, 2])
     end
 
     class << self
+
+      alias to_string from_integer
       alias to_s from_integer
       alias from_i from_integer
+
+      alias to_i to_integer
+      alias from_string to_integer
+      alias from_s to_integer
     end
   end
 end
