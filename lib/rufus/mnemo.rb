@@ -68,7 +68,7 @@ module Rufus
   #
   module Mnemo
 
-    VERSION = '1.2.0'
+    VERSION = '1.2.1'
 
     V = %w[ a e i o u ]
     C = %w[ b d g h j k m n p r s t z ]
