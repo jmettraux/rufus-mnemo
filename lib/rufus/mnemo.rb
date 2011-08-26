@@ -95,16 +95,14 @@ module Rufus
 
       return "#{NEG}#{from_integer(-integer)}" if integer < 0
 
-      s = from_i(integer)
-      to_special(s)
+      to_special(from_i(integer))
     end
 
     # Turns the given Mnemo word to its equivalent integer.
     #
     def self.to_integer(string)
 
-      s = from_special(string)
-      to_i(s)
+      to_i(from_special(string))
     end
 
     # Turns a simple syllable into the equivalent number.
@@ -138,7 +136,7 @@ module Rufus
       begin
         to_integer(string)
         true
-      rescue #Exception => e
+      rescue
         false
       end
     end
@@ -183,7 +181,9 @@ module Rufus
 
     def self.to_i(s)
 
-      return 0 if s.length == 0
+      if s.length == 0
+        return 0
+      end
 
       if m = s.match(NEGATIVE)
         return -1 * to_i(m[1])
