@@ -70,23 +70,13 @@ module Rufus
 
     VERSION = '1.2.1'
 
-    V = %w[ a e i o u ]
-    C = %w[ b d g h j k m n p r s t z ]
-
-    SYL = []
-
-    C.each do |s|
-      V.each do |v|
-        SYL << s + v
-      end
-    end
-
-    SYL << 'wa'
-    SYL << 'wo'
-
-    SYL << 'ya'
-    SYL << 'yo'
-    SYL << 'yu'
+    SYL = %w[
+      b d g h j k m n p r s t z
+    ].product(%w[
+      a e i o u
+    ]).collect { |c, v| c + v }.concat(%w[
+      wa wo ya yo yu
+    ])
 
     SPECIAL = [
       [ 'hu', 'fu' ],
