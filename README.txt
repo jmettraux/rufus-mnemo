@@ -8,7 +8,7 @@ The module Rufus::Mnemo has all the explanation.
 
 == getting it
 
-  sudo gem install rufus-mnemo
+  gem install rufus-mnemo
 
 or at
 
@@ -20,14 +20,13 @@ http://rubyforge.org/frs/?group_id=4812
   require 'rubygems'
   require 'rufus/mnemo'
 
-  s = Rufus::Mnemo::from_integer 125704
+  p Rufus::Mnemo.from_integer(125704)
+  p Rufus::Mnemo.from_i(125704)
+  p Rufus::Mnemo.to_s(125704)
+    # => "karasu"
 
-  puts s
-    # => 'karasu'
-
-  i = Rufus::Mnemo::to_integer s
-
-  puts i
+  p Rufus::Mnemo.to_integer(s)
+  p Rufus::Mnemo.to_i(s)
     # => 125704
 
 
@@ -35,7 +34,8 @@ http://rubyforge.org/frs/?group_id=4812
 
 They are prefixed with the "wi" syllable (Thanks Stephan Wehner).
 
-  p Rufus::Mnemo::from_integer -173866
+  p Rufus::Mnemo.from_integer(-173866)
+  p Rufus::Mnemo.to_s(-173866)
     # => 'winamote'
 
 
