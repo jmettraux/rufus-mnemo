@@ -153,8 +153,6 @@ module Rufus
       end
     end
 
-    private
-
     def self.string_split(s, result=[])
 
       return result if s.length < 1
@@ -193,11 +191,6 @@ module Rufus
       from_i(rest) + SYL[mod]
     end
 
-    def self.to_s(i)
-
-      from_i(i)
-    end
-
     def self.to_i(s)
 
       return 0 if s.length == 0
@@ -207,6 +200,10 @@ module Rufus
       end
 
       SYL.length * to_i(s[0..-3]) + to_number(s[-2, 2])
+    end
+
+    class << self
+      alias to_s from_i
     end
   end
 end
