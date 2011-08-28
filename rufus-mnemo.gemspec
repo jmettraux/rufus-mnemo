@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
 
   s.version = File.read(
     File.expand_path('../lib/rufus/mnemo.rb', __FILE__)
-  ).match(/VERSION *= *['"]([^'"]+)/)[1]
+  ).match(/ VERSION *= *['"]([^'"]+)/)[1]
 
   s.platform = Gem::Platform::RUBY
   s.authors = [ 'John Mettraux' ]
