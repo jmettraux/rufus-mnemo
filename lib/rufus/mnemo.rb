@@ -38,8 +38,8 @@ module Rufus
   #
   # Mnemo is meant to be used for generating human readable (or more
   # easily rememberable) identifiers. Its first usage is within the
-  # OpenWFEru Ruby workflow and bpm engine for generating 'kawaii'
-  # business process instance ids.
+  # ruote Ruby workflow engine for generating 'kawaii' business process
+  # instance ids.
   #
   #   require 'rubygems'
   #   require 'rufus/mnemo'
