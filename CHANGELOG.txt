@@ -2,10 +2,12 @@
 = rufus-mnemo CHANGELOG.txt
 
 
-== rufus-mnemo - 1.2.3    not yet released
+== rufus-mnemo - 1.2.3    released 2012/06/17
+
+- fix Rufus::Mnemo.split(s)
 
 
-== rufus-mnemo - 1.2.2    released 2001/08/27
+== rufus-mnemo - 1.2.2    released 2011/08/27
 
 - reworked aliases (aligned with README)
 

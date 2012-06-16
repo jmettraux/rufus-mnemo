@@ -70,8 +70,7 @@ http://github.com/jmettraux/rufus-mnemo
 
 ## author ##
 
-John Mettraux, jmettraux@gmail.com
-http://jmettraux.wordpress.com
+John Mettraux, jmettraux@gmail.com, http://lambda.io/jmettraux
 
 
 ## the rest of Rufus ##
