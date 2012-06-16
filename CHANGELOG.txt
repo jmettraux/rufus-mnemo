@@ -2,7 +2,10 @@
 = rufus-mnemo CHANGELOG.txt
 
 
-== rufus-mnemo - 1.2.2    not yet released
+== rufus-mnemo - 1.2.3    not yet released
+
+
+== rufus-mnemo - 1.2.2    released 2001/08/27
 
 - reworked aliases (aligned with README)
 
