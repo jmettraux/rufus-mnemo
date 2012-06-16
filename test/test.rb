@@ -5,7 +5,7 @@
 # Sun Mar 18 13:29:37 JST 2007
 #
 
-$:.unshift(File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib')))
+$:.unshift(File.expand_path('../../lib', __FILE__))
 
 require 'test/unit'
 require 'rufus/mnemo'
@@ -15,13 +15,7 @@ require 'rufus/mnemo'
 #
 class MnemoTest < Test::Unit::TestCase
 
-  #def setup
-  #end
-
-  #def teardown
-  #end
-
-  def test_0
+  def test_from_integer
 
     t = Time.now
     #puts t.to_f
@@ -38,29 +32,25 @@ class MnemoTest < Test::Unit::TestCase
     st2 = Rufus::Mnemo::to_integer(s)
     s2 = Rufus::Mnemo::from_integer(st2)
 
-    #puts st
-    #puts s
-
-    #puts st2
-    #puts s2
-
     assert_equal s, s2
     assert_equal st, st2
+  end
 
-    a = Rufus::Mnemo::split(s)
+  def test_is_mnemo_word
 
-    assert_equal a.join, s
+    assert Rufus::Mnemo::is_mnemo_word('takeshi')
 
-    #puts Rufus::Mnemo::to_integer("tunashima")
-    #puts Rufus::Mnemo::to_integer("tsunashima")
+    assert Rufus::Mnemo::is_mnemo_word('tsunasima')
+    assert Rufus::Mnemo::is_mnemo_word('tunashima')
 
-    assert Rufus::Mnemo::is_mnemo_word("takeshi")
+    assert (not Rufus::Mnemo::is_mnemo_word('dsfadf'))
+    assert (not Rufus::Mnemo::is_mnemo_word('takeshin'))
+  end
 
-    assert Rufus::Mnemo::is_mnemo_word("tsunasima")
-    assert Rufus::Mnemo::is_mnemo_word("tunashima")
+  def test_split
 
-    assert (not Rufus::Mnemo::is_mnemo_word("dsfadf"))
-    assert (not Rufus::Mnemo::is_mnemo_word("takeshin"))
+    assert_equal %w[ ko chi pi ga ], Rufus::Mnemo.split('kochipiga')
+    assert_equal %w[ ko na de tzu ], Rufus::Mnemo.split('konadetzu')
   end
 
   def test_zero
