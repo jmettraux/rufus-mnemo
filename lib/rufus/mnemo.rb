@@ -122,10 +122,9 @@ module Rufus
     #
     def self.split(word)
 
-      word = from_special(word)
-      a = string_split(word)
-
-      a_to_special(a)
+      a_to_special(
+        string_split(
+          from_special(word)))
     end
 
     # Returns if the string is a Mnemo word, like "fugu" or
@@ -152,7 +151,7 @@ module Rufus
 
     def self.a_to_special(a)
 
-      a.collect { |syl| SPECIAL.find { |aa, bb| syl == bb } || syl }
+      a.collect { |syl| (SPECIAL.assoc(syl) || [ nil, syl ])[1] }
     end
 
     def self.to_special(s)
