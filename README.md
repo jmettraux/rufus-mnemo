@@ -1,17 +1,17 @@
 
-= rufus-mnemo
+# rufus-mnemo #
 
 This gem provides methods for turning integer into easier to remember 'words' and vice-versa.
 
 The module Rufus::Mnemo has all the explanation.
 
 
-== getting it
+## getting it ##
 
     gem install rufus-mnemo
 
 
-== usage
+## usage ##
 
     require 'rubygems'
     require 'rufus/mnemo'
@@ -19,7 +19,7 @@ The module Rufus::Mnemo has all the explanation.
     p Rufus::Mnemo.from_integer(125704)
     p Rufus::Mnemo.from_i(125704)
     p Rufus::Mnemo.to_s(125704)
-      # => "karasu"
+      # => 'karasu'
 
     p Rufus::Mnemo.to_integer('karasu')
     p Rufus::Mnemo.to_i('karasu')
@@ -27,7 +27,7 @@ The module Rufus::Mnemo has all the explanation.
       # => 125704
 
 
-== about negative integers
+## about negative integers ##
 
 They are prefixed with the "wi" syllable (Thanks Stephan Wehner).
 
@@ -36,50 +36,50 @@ They are prefixed with the "wi" syllable (Thanks Stephan Wehner).
       # => 'winamote'
 
 
-= ports in other languages
+## ports in other languages ##
 
 * PHP: https://github.com/aleksblendwerk/mnemo by Alexander Seltenreich
 
 
-= dependencies
+## dependencies ##
 
 None.
 
 
-== mailing list
+## mailing list ##
 
 On the rufus-ruby list:
 
 http://groups.google.com/group/rufus-ruby
 
 
-== IRC
+## IRC ##
 
 On freenode.net, the #ruote channel
 
 
-== issue tracker
+## issue tracker ##
 
 https://github.com/jmettraux/rufus-mnemo/issues
 
 
-== source
+## source ##
 
 http://github.com/jmettraux/rufus-mnemo
 
 
-== author
+## author ##
 
 John Mettraux, jmettraux@gmail.com
 http://jmettraux.wordpress.com
 
 
-== the rest of Rufus
+## the rest of Rufus ##
 
 http://rufus.rubyforge.org
 
 
-== license
+## license ##
 
 MIT
 
