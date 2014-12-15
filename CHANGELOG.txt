@@ -1,6 +1,10 @@
 
 = rufus-mnemo CHANGELOG.txt
 
+== rufus-mnemo - 1.3.0    not yet released
+
+- remove Rufus::Mnemo.to_s alias, Thanks Rafał Łasocha
+
 
 == rufus-mnemo - 1.2.3    released 2012/06/17
 

@@ -93,12 +93,10 @@ class MnemoTest < Test::Unit::TestCase
     assert_equal 'wina', Rufus::Mnemo.from_integer(-35)
     assert_equal 'wina', Rufus::Mnemo.from_i(-35)
     assert_equal 'wina', Rufus::Mnemo.to_string(-35)
-    assert_equal 'wina', Rufus::Mnemo.to_s(-35)
 
     assert_equal 'dobejotehotzu',  Rufus::Mnemo.from_integer(13477774722)
     assert_equal 'dobejotehotzu',  Rufus::Mnemo.from_i(13477774722)
     assert_equal 'dobejotehotzu',  Rufus::Mnemo.to_string(13477774722)
-    assert_equal 'dobejotehotzu',  Rufus::Mnemo.to_s(13477774722)
   end
 
   def test_aliases_s_to_i

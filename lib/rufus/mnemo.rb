@@ -194,12 +194,14 @@ module Rufus
     class << self
 
       alias to_string from_integer
-      alias to_s from_integer
       alias from_i from_integer
 
       alias to_i to_integer
       alias from_string to_integer
       alias from_s to_integer
+
+      #alias to_s from_integer
+        # NO, that gets in the way of of Rufus::Mnemo.inspect on Ruby <= 1.9
     end
   end
 end
