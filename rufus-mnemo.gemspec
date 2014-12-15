@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.email = %w[ jmettraux@gmail.com ]
   s.homepage = 'http://github.com/jmettraux/rufus-mnemo/'
   s.rubyforge_project = 'rufus'
+  s.license = 'MIT'
   s.summary = 'Turning (large) integers into japanese sounding words and vice versa'
   s.description = %{
 Turning (large) integers into japanese sounding words and vice versa
@@ -26,7 +27,7 @@ Turning (large) integers into japanese sounding words and vice versa
 
   #s.add_dependency 'rufus-json', '>= 1.0.1'
 
-  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rake', '~> 0'
 
   s.require_path = 'lib'
 end
