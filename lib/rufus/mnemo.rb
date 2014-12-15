@@ -68,7 +68,7 @@ module Rufus
   #
   module Mnemo
 
-    VERSION = '1.2.3'
+    VERSION = '1.3.0'
 
     SYL = %w[
       b d g h j k m n p r s t z
