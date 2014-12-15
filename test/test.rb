@@ -113,5 +113,11 @@ class MnemoTest < Test::Unit::TestCase
     assert_equal 13477774722, Rufus::Mnemo.to_integer('dobejotehotzu')
     assert_equal 13477774722, Rufus::Mnemo.to_i('dobejotehotzu')
   end
+
+  def test_rufus_mnemo_inspect
+
+    assert_equal "Rufus", Rufus.inspect
+    assert_equal "Rufus::Mnemo", Rufus::Mnemo.inspect
+  end
 end
 
