@@ -1,84 +1,87 @@
 
-# rufus-mnemo #
+# rufus-mnemo
 
 This gem provides methods for turning integer into easier to remember 'words' and vice-versa.
 
 The module Rufus::Mnemo has all the explanation.
 
 
-## getting it ##
+## getting it
 
-    gem install rufus-mnemo
+```
+gem install rufus-mnemo
+```
 
-
-## usage ##
-
-    require 'rubygems'
-    require 'rufus/mnemo'
-
-    p Rufus::Mnemo.from_integer(125704)
-    p Rufus::Mnemo.from_i(125704)
-    p Rufus::Mnemo.to_s(125704)
-      # => 'karasu'
-
-    p Rufus::Mnemo.to_integer('karasu')
-    p Rufus::Mnemo.to_i('karasu')
-    p Rufus::Mnemo.from_s('karasu')
-      # => 125704
+or add it to your `Gemfile`.
 
 
-## about negative integers ##
+## usage
+
+```ruby
+#require 'rubygems'
+require 'rufus/mnemo'
+
+p Rufus::Mnemo.from_integer(125704)
+p Rufus::Mnemo.from_i(125704)
+p Rufus::Mnemo.to_s(125704)
+  # => 'karasu'
+
+p Rufus::Mnemo.to_integer('karasu')
+p Rufus::Mnemo.to_i('karasu')
+p Rufus::Mnemo.from_s('karasu')
+  # => 125704
+```
+
+
+## about negative integers
 
 They are prefixed with the "wi" syllable (Thanks Stephan Wehner).
 
-    p Rufus::Mnemo.from_integer(-173866)
-    p Rufus::Mnemo.to_s(-173866)
-      # => 'winamote'
+```ruby
+p Rufus::Mnemo.from_integer(-173866)
+p Rufus::Mnemo.to_s(-173866)
+  # => 'winamote'
+```
 
 
-## ports in other languages ##
+## ports in other languages
 
 * PHP: https://github.com/aleksblendwerk/mnemo by Alexander Seltenreich
 
 
-## dependencies ##
+## dependencies
 
 None.
 
 
-## mailing list ##
+## mailing list
 
 On the rufus-ruby list:
 
 http://groups.google.com/group/rufus-ruby
 
 
-## IRC ##
+## IRC
 
 On freenode.net, the #ruote channel
 
 
-## issue tracker ##
+## issue tracker
 
 https://github.com/jmettraux/rufus-mnemo/issues
 
 
-## source ##
+## source
 
-http://github.com/jmettraux/rufus-mnemo
+https://github.com/jmettraux/rufus-mnemo
 
 
-## author ##
+## author
 
 John Mettraux, jmettraux@gmail.com, http://lambda.io/jmettraux
 
 
-## the rest of Rufus ##
-
-http://rufus.rubyforge.org
-
-
-## license ##
+## license
 
 MIT
 
