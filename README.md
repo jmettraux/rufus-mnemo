@@ -48,6 +48,7 @@ p Rufus::Mnemo.to_s(-173866)
 
 * PHP: https://github.com/aleksblendwerk/mnemo by Alexander Seltenreich
 * C99: https://github.com/flon-io/mnemo a rework/evolution of rufus-mnemo but in C
+* Objective-C: https://github.com/jfreyre/JFEMnemo by Jerome Freyre
 
 
 ## dependencies
