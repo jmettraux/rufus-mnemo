@@ -5,6 +5,8 @@ This gem provides methods for turning integer into easier to remember 'words' an
 
 The module Rufus::Mnemo has all the explanation.
 
+2016 note: I'm now using [munemo](https://github.com/jmettraux/munemo) instead of this rufus-mnemo, it's a bit different but simpler.
+
 
 ## getting it
 
