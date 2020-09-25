@@ -10,8 +10,7 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.authors = [ 'John Mettraux' ]
   s.email = %w[ jmettraux@gmail.com ]
-  s.homepage = 'http://github.com/jmettraux/rufus-mnemo/'
-  s.rubyforge_project = 'rufus'
+  s.homepage = 'https://github.com/jmettraux/rufus-mnemo/'
   s.license = 'MIT'
   s.summary = 'Turning (large) integers into japanese sounding words and vice versa'
   s.description = %{
